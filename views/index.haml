@@ -18,6 +18,8 @@
         
   %br
   %br
+  %img{:src => "http://dl.dropbox.com/u/517417/abc.png"}
+  %br
   -if !params[:you].nil?
     %img{:src => graph(params[:you].to_f,params[:a].to_f,params[:b].to_f,params[:c].to_f)}
   -else
