@@ -1,0 +1,22 @@
+.main{:style => "text-align: center"}
+  %form{:action => "/", :method => "get"}
+    %label Your Speed
+    %input{:name => "you", :size => 3, :type => "text", :value => params[:you] || "6"}
+    &nbsp;&nbsp;&nbsp;
+    %label Raptor A's Speed
+    %input{:name => "a", :size => 3, :type => "text", :value => params[:a] || "10"}
+    &nbsp;&nbsp;&nbsp;
+    %label Raptor B's Speed
+    %input{:name => "b", :size => 3, :type => "text", :value => params[:b] || "25"}
+    &nbsp;&nbsp;&nbsp;
+    %label Raptor C's Speed
+    %input{:name => "c", :size => 3, :type => "text", :value => params[:c] || "25"}
+    &nbsp;&nbsp;&nbsp;
+    %input{:type => "submit", :value => "Start Running"}
+        
+  %br
+  %br
+  -if !params[:you].nil?
+    %img{:src => graph(params[:you].to_f,params[:a].to_f,params[:b].to_f,params[:c].to_f)}
+  -else
+    %img{:src => graph(6,10,25,25)}
