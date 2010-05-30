@@ -54,7 +54,7 @@ helpers do
       r_c.move_toward(you, turn_length)
       you.move_toward(direction, turn_length)
       i+=1
-      break if ((turn_length*i) > 250_000)
+      break if ((turn_length*i) > 20_000)
     end
     return (turn_length*i)/1000.0
   end
