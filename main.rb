@@ -44,8 +44,8 @@ helpers do
     r_a = Point.new(0.0, 20.0, a)
     r_b = Point.new(0.0, 0.0, b)
     r_c = Point.new(0.0, 0.0, c)
-    r_b.move(20.0, 225)
-    r_c.move(20.0, -45)
+    r_b.move(20.0, 210)
+    r_c.move(20.0, -30)
     i = 0
     turn_length = 5
     while (r_a.distance_to(you) > 0.1)&&(r_b.distance_to(you) > 0.1)&&(r_c.distance_to(you) > 0.1)
