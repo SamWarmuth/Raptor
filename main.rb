@@ -62,6 +62,6 @@ helpers do
     linear_output = (0..120).to_a.map{|i| (i*3).to_f}.map{|i| [i, test_run(i, your_speed, a_speed, b_speed, c_speed)]}
     maximum = (linear_output.map{|i| i[1]}.max)*1.1
     multiplier = 100.0/maximum
-    return "http://chart.apis.google.com/chart?cht=s&chd=t:"+linear_output.map{|i| sprintf("%.3f",i[0]/3.6) }.join(",")+"|"+linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",") + "|40&chxt=x,y&chs=500x400&chxr=0,0,360,45|1,0,#{maximum}&chtt=Survival%20Time%20(s)%20vs%20Angle%20of%20Run%20(degrees)"
+    return "http://chart.apis.google.com/chart?cht=s&chd=t:"+linear_output.map{|i| sprintf("%.3f",i[0]/3.6) }.join(",")+"|"+linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",") + "|40&chxt=x,y&chs=500x400&chg=33.33,200,2,2,25&chxr=0,0,360,45|1,0,#{maximum}&chtt=Survival%20Time%20(s)%20vs%20Angle%20of%20Run%20(degrees)"
   end
 end
