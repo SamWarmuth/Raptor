@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'haml'
 
 get "/" do
   haml :index
@@ -58,10 +59,12 @@ helpers do
     end
     return (turn_length*i)/1000.0
   end
-  def graph(your_speed, a_speed, b_speed, c_speed)
+  def graphs(your_speed, a_speed, b_speed, c_speed)
     linear_output = (0..120).to_a.map{|i| (i*3).to_f}.map{|i| [i, test_run(i, your_speed, a_speed, b_speed, c_speed)]}
     maximum = (linear_output.map{|i| i[1]}.max)*1.1
     multiplier = 100.0/maximum
-    return "http://chart.apis.google.com/chart?cht=s&chd=t:"+linear_output.map{|i| sprintf("%.3f",i[0]/3.6) }.join(",")+"|"+linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",") + "|40&chxt=x,y&chs=500x400&chg=33.33,200,2,2,25&chxr=0,0,360,45|1,0,#{maximum}&chtt=Survival%20Time%20(s)%20vs%20Angle%20of%20Run%20(degrees)"
+    30.times {linear_output.push(linear_output.shift)}
+    linear_output.reverse!
+    return ["http://chart.apis.google.com/chart?cht=s&chd=t:"+linear_output.map{|i| sprintf("%.3f",i[0]/3.6) }.join(",")+"|"+linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",") + "|40&chxt=x,y&chs=500x400&chg=33.33,200,2,2,25&chxr=0,0,360,45|1,0,#{maximum}&chtt=Survival%20Time%20(s)%20vs%20Angle%20of%20Run%20(degrees)", "http://chart.apis.google.com/chart?cht=rs&chs=400x400&chd=t:#{linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",")}&chxt=x&chxl=0:#{linear_output.map{|i| ((i[0]%10 == 0)&&(i[0].to_i != 360) ? i[0].to_i : "" )}.join("|")}"]
   end
 end

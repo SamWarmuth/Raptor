@@ -21,9 +21,13 @@
   %img{:src => "http://dl.dropbox.com/u/517417/abc.png"}
   %br
   -if !params[:you].nil?
-    %img{:src => graph(params[:you].to_f,params[:a].to_f,params[:b].to_f,params[:c].to_f)}
+    -g = graphs(params[:you].to_f,params[:a].to_f,params[:b].to_f,params[:c].to_f)
+    %img{:src => g[0]}
+    %img{:src => g[1]}
   -else
-    %img{:src => graph(6,10,25,25)}
+    -g = graphs(6,10,25,25)
+    %img{:src => g[0]}
+    %img{:src => g[1]}
   
   %br
   %a{:href => "http://github.com/SamWarmuth/Raptor"} Source Code
