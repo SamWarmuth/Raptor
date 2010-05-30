@@ -1,4 +1,6 @@
 .main{:style => "text-align: center"}
+  %p See <a href='http://xkcd.com/135/'>http://xkcd.com/135/</a> and <a href='http://news.ycombinator.com/item?id=1389131'>http://news.ycombinator.com/item?id=1389131</a>
+  
   %form{:action => "/", :method => "get"}
     %label Your Speed
     %input{:name => "you", :size => 3, :type => "text", :value => params[:you] || "6"}
@@ -20,3 +22,5 @@
     %img{:src => graph(params[:you].to_f,params[:a].to_f,params[:b].to_f,params[:c].to_f)}
   -else
     %img{:src => graph(6,10,25,25)}
+  %br
+  %a{:href => "http://github.com/SamWarmuth/Raptor"} Source Code
