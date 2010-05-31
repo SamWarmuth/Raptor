@@ -104,7 +104,7 @@ helpers do
     
     linear = "http://chart.apis.google.com/chart?cht=s&chd=t:"+linear_output.map{|i| sprintf("%.3f",i[0]/3.6) }.join(",")+"|"+linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",") + "|40&chxt=x,y&chs=500x400&chg=33.33,200,2,2,25&chxr=0,0,360,45|1,0,#{maximum}&chtt=Survival%20Time%20(s)%20vs%20Angle%20of%20Run%20(degrees)"
     radial = "http://chart.apis.google.com/chart?cht=rs&chs=400x400&chd=t:#{linear_output.map{|i| sprintf("%.3f",i[1]*multiplier)}.join(",")}&chxt=x&chxl=0:#{linear_output.map{|i| ((i[0]%10 == 0) ? i[0].to_i : "" )}.join("|")}"
-    trace = "http://chart.apis.google.com/chart?cht=s&chd=t:"+best_trace.map{|i| sprintf("%.1f",i[0]*2.5+50) }.join(",")+"|"+best_trace.map{|i| sprintf("%.1f", i[1]*2.5+50)}.join(",") + "|40&chco=6666FF|FF6600|FF0044|FFDD22&chxt=x,y&chs=500x400&chg=33.33,200,2,2,25&chxr=0,#{min_x},#{max_x},45|1,#{min_y},#{max_y},10&chtt=Survival Trace of Running in Optimal Direction (#{max_angle})"
+    trace = "http://chart.apis.google.com/chart?cht=s&chd=t:"+best_trace.map{|i| sprintf("%.1f",i[0]*2.5+50) }.join(",")+"|"+best_trace.map{|i| sprintf("%.1f", i[1]*2.6+30)}.join(",") + "|40&chco=6666FF|FF6600|FF0044|FFDD22&chxt=x,y&chs=500x400&chxr=0,-20,20,5|1,-10,25,5&chtt=Survival Trace of Running in Optimal Direction (#{max_angle})"
     return {:linear => linear, :radial => radial, :trace => trace}
   end
 end
