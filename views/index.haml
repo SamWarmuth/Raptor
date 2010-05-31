@@ -22,12 +22,15 @@
   %br
   -if !params[:you].nil?
     -g = graphs(params[:you].to_f,params[:a].to_f,params[:b].to_f,params[:c].to_f)
-    %img{:src => g[0]}
-    %img{:src => g[1]}
+    %img{:src => g[:linear]}
+    %img{:src => g[:radial]}
+    %img{:src => g[:trace]}
+
   -else
     -g = graphs(6,10,25,25)
-    %img{:src => g[0]}
-    %img{:src => g[1]}
+    %img{:src => g[:linear]}
+    %img{:src => g[:radial]}
+    %img{:src => g[:trace]}
   
   %br
   %a{:href => "http://github.com/SamWarmuth/Raptor"} Source Code
